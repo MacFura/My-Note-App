@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./Form.module.scss";
 import Input from "../Inptu/Input";
+import Button from "../Button/Button";
 
 const Form = ({ submitFn }) => (
   <div className={styles.wrapper}>
@@ -24,7 +25,7 @@ const Form = ({ submitFn }) => (
         label="Decription"
         tag="textarea"
       />
-      <button className={styles.button}>add new item</button>
+      <Button>add new item</Button>
     </form>
   </div >
 );

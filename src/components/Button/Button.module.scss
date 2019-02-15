@@ -1,17 +1,22 @@
-
 .button {
-    font-size: 10px;
-    text-decoration: none;
-    padding: 7px 12px;
-    font-weight: 500;
-    background: none;
-    border: 2px solid #1E58FF;
-    color: #1E58FF;
+  display: block;
+  font-size: 10px;
+  text-decoration: none;
+  padding: 7px 12px;
+  font-weight: 500;
+  background: none;
+  border: 2px solid #1e58ff;
+  color: #1e58ff;
+  cursor: pointer;
 }
 
 .secondary {
-    @extend .button;
-
-    background-color: #1E58FF;
-    color: white;
+  @extend .button;
+  
+  width: 120px;
+  background-color: #1e58ff;
+  color: white;
+  font-weight: 700;
+  font-size: .8em; 
+  box-shadow: 0 5px 20px -5px rgba(#818181, .9);
 }

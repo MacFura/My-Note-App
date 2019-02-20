@@ -8,22 +8,37 @@ import NotesView from '../NotesView/NotesView';
 import Header from '../../components/Header/Header';
 import Modal from '../../components/Modal/Modal';
 
+const initialStateItems = [
+  {
+    image: "https://pbs.twimg.com/profile_images/906557353549598720/oapgW_Fp.jpg",
+    name: "Dan Abramov",
+    description: "React core member",
+    twitterLink: "https://twitter.com/dan_abramov"
+  }
+];
+
 class Root extends React.Component {
   state = {
-    twitter: [],
-    article: [],
-    note: [],
+    items: [...initialStateItems],
     isModalOpen: false,
+    name: 'Roman',
   };
 
-  addItem = (e, newItem) => {
+  addItem = e => {
     e.preventDefault();
-    
+
+    const newItem = {
+      name: e.target[0].value,
+      twitterLink: e.target[1].value,
+      image: e.target[2].value,
+      description: e.target[3].value
+    };
+
     this.setState(prevState => ({
-      [newItem.type]: [...prevState[newItem.type], newItem],
+      items: [...prevState.items, newItem]
     }));
-    
-    this.closeModal();
+
+    e.target.reset();
   };
   
   openModal = () => {
@@ -40,14 +55,10 @@ class Root extends React.Component {
 
   render() {
     const { isModalOpen } = this.state;
-    const contextElements = {
-      ...this.state,
-      addItem: this.addItem
-    }
     
     return (
       <BrowserRouter>
-        <AppContext.Provider value={contextElements}>
+        <AppContext.Provider value={this.state.name}>
           <Header openModalFn={this.openModal} />
           <h1>hello world</h1>
           <Switch>
@@ -64,6 +75,8 @@ class Root extends React.Component {
 
 export default Root;
 
+// 1. usunąć initialStateItems
+// 2. Przywrócić funkcjonowanie addItem
 // 3. Dopasować Form.js do nowych potrzeb
 // 4. Przystosować widoki podstron do nowych itemów
 // 5. Wyświetlać odpowiednie notatki na podstronach 
